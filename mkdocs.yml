@@ -1,0 +1,58 @@
+site_name: e2e-Data Docs
+site_dir: public/docs
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.indexes
+    - toc.integrate
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: grey
+      accent: blue
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: grey
+      accent: blue
+  favicon: assets/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com
+extra_css:
+  - theme-overrides.css
+extra_javascript:
+  - theme-sync.js
+plugins: []
+nav:
+  - Português:
+    - Início: pt/index.md
+    - Guia do Utilizador: pt/getting-started.md
+    - Pipelines: pt/pipelines.md
+    - Transformações: pt/transformations.md
+    - Agendamento: pt/scheduling.md
+    - Versionamento: pt/versioning.md
+    - Editor de Código: pt/editor.md
+    - Instalação: pt/installation.md
+    - AI Agent: pt/ai-agent.md
+    - Secção Final: pt/final.md
+  - English:
+    - Home: en/index.md
+    - Getting Started: en/getting-started.md
+    - Pipelines: en/pipelines.md
+    - Transformations: en/transformations.md
+    - Scheduling: en/scheduling.md
+    - Versioning: en/versioning.md
+    - Script Viewer: en/editor.md
+    - Installation: en/installation.md
+    - AI Agent: en/ai-agent.md
+    - Final: en/final.md

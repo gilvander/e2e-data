@@ -1,0 +1,227 @@
+.about {
+  padding-bottom: 4rem;
+}
+
+.about-hero {
+  text-align: center;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.about-hero .lead {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.anchor-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+}
+
+.pill.active {
+  background: var(--brand-primary);
+  color: white;
+  border-color: var(--brand-primary);
+}
+
+.about-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  scroll-margin-top: 80px; /* For sticky navbar */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--brand-dark);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.about .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.about .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about .card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--brand-primary);
+}
+
+.about .card .icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--brand-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.about .card .icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.about .card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--brand-dark);
+}
+
+.about .card p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.about .card ul {
+  padding-left: 1.2rem;
+  margin: 0;
+  color: var(--text-light);
+}
+
+.about .card li {
+  margin-bottom: 0.5rem;
+}
+
+.audience-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.audience-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  font-weight: 500;
+  color: var(--brand-dark);
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.audience-list li:hover {
+  background: var(--bg);
+  box-shadow: var(--shadow-md);
+  transform: translateX(5px);
+  border-color: var(--brand-primary);
+}
+
+.audience-list .icon {
+  color: var(--brand-primary);
+  min-width: 24px;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .pill.active {
+  color: var(--bg); /* Ensure contrast on light blue background */
+  font-weight: 600;
+}
+
+[data-theme="dark"] .about .card {
+  background: var(--brand-light); /* Darker background in dark mode */
+}
+
+/* Transparency Section specific styles */
+#transparencia .card,
+#transparencia .card:hover,
+[data-theme="dark"] #transparencia .card,
+#plataforma .card,
+#plataforma .card:hover,
+[data-theme="dark"] #plataforma .card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#transparencia .card:hover,
+#plataforma .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-hero {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .anchor-nav {
+    gap: 0.5rem;
+  }
+  
+  .pill {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
