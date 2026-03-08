@@ -1,6 +1,0 @@
-/* Align MkDocs colors closer to brand */
-:root {
-  --md-primary-fg-color: #4b4b4b;
-  --md-primary-fg-color--light: #6b6b6b;
-  --md-primary-fg-color--dark: #2f2f2f;
-}

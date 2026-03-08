@@ -4,3 +4,13 @@
   --md-primary-fg-color--light: #6b6b6b;
   --md-primary-fg-color--dark: #2f2f2f;
 }
+
+/* Limit image size */
+img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 1em 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

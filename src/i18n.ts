@@ -12,31 +12,31 @@ const resources = {
       home: {
         title: "e2e‑Data",
         lead: "End‑to‑end support from collection to visualization",
-        heroBody: "e2e‑Data is a data platform that streamlines the entire flow — from ingesting files and buckets, through smart transformations, to storage and final analysis. Built for teams that need fast, secure and easy‑to‑maintain pipelines.",
+        heroBody: "e2e-Data is an Open Source Data Platform that simplifies the ETL/ELT lifecycle by bridging the gap between high-level visualization and low-level Python engineering. Leveraging dltHub, we provide a high-performance engine wrapped in an intuitive low-code interface where pipelines are built by drawing diagrams and connecting nodes.",
         ctaDocs: "Read documentation",
         featuresTitle: "Why use e2e‑Data?",
         features: {
-          e2eTitle: "End‑to‑end pipelines",
-          e2eDesc: "From ingestion to analysis in a single, coherent flow. Creating pipelines has never been so simple — drag, configure and run.",
-          docsTitle: "Clear documentation",
-          docsDesc: "Detailed guides and structured documentation with MkDocs. Ideal for both technical teams and non‑technical users.",
-          chatTitle: "Assistive chat",
-          chatDesc: "An AI agent able to answer questions, explain data, suggest queries and assist analysis. Coming soon: full WhatsApp integration."
+          e2eTitle: "Visual Engineering",
+          e2eDesc: "Architect complex data flows on an interactive canvas. The diagram is the logic.",
+          docsTitle: "Code-Powered Nodes",
+          docsDesc: "Every node is backed by optimized Python logic and dltHub, ensuring high performance without the overhead of manual coding.",
+          chatTitle: "AI-Architect",
+          chatDesc: "Describe your goal in plain language, and the AI will draft the diagram for you—selecting the appropriate nodes and establishing the flow."
         },
         cycleTitle: "How the data cycle works",
         cycleLabels: {
-          collect: "Collect",
+          collect: "Extract",
           transform: "Transform",
           validate: "Validate",
-          store: "Store",
+          store: "Load",
           visualize: "Visualize",
           analyze: "Analyze"
         },
         cycleDesc: {
-          collect: "Receive data from public S3 buckets or local files.",
-          transform: "Apply rules, normalizations and no‑code transformations.",
-          validate: "Ensure data integrity, format and consistency.",
-          store: "Efficient storage in DuckDB.",
+          collect: "Receive data from public S3 buckets, local files, or SQL Databases.",
+          transform: "Apply visual transformations or custom Python logic.",
+          validate: "Ensure data integrity with dltHub schema management.",
+          store: "Efficient storage in DuckDB or external warehouses.",
           visualize: "Explore results with SQL Editor or AI Agent.",
           analyze: "Get fast, actionable insights."
         },
@@ -46,24 +46,24 @@ const resources = {
         title: "Product",
         lead: "e2e‑Data was born to simplify modern data engineering.",
         body1: "In a context where companies need to transform data quickly, integrate heterogeneous sources and create repeatable processes, the platform offers a clear approach:",
-        body2: "less code, more results.",
+        body2: "visual design, code power.",
         pills: { mission: "Mission", platform: "Platform", transparency: "Transparency", audience: "Target audience" },
         missionTitle: "Our mission",
-        missionBody: "Enable any team — technical or not — to build complete data pipelines, from ingestion to analysis, with maximum efficiency and transparency.",
+        missionBody: "Bridge the gap between engineering and analysis, enabling any team to build production-ready pipelines with the robustness of Python and the simplicity of low-code.",
         missionCta: "See documentation",
         platformTitle: "What the platform offers",
         platform: {
           pipelinesVisualTitle: "Visual pipelines",
-          pipelinesVisualDesc: "Build data pipelines by dragging nodes, connecting steps and configuring each phase intuitively.",
+          pipelinesVisualDesc: "Build data pipelines by dragging nodes. The platform generates the underlying Python/dlt code for you.",
           supportMultipleTitle: "Support for multiple data sources",
-          supportMultipleItems: ["Public S3 buckets", "Local files", "Future connectors (BigQuery, GSheets, PostgreSQL)"],
+          supportMultipleItems: ["Public S3 buckets", "Local files (CSV, Parquet, JSONL)", "SQL Databases (Postgres, Oracle, etc.)"],
           transformIntelligentTitle: "Intelligent transformations",
-          transformIntelligentItems: ["Normalizations", "Conditions", "Format changes", "Code transformations", "Chained transformation pipelines"],
-          storageEfficientTitle: "Efficient storage",
-          storageEfficientDesc: "All data flows into DuckDB, ensuring speed, low cost and local or cloud analysis.",
+          transformIntelligentItems: ["No-code visual transformations", "Custom Python scripts", "Schema evolution handling"],
+          storageEfficientTitle: "Flexible storage",
+          storageEfficientDesc: "Data flows into DuckDB for local analytics or can be routed to external warehouses via dltHub destinations.",
           intelligenceAssistiveTitle: "Assistive intelligence",
           intelligenceAssistiveIntro: "The AI Agent helps with:",
-          intelligenceAssistiveItems: ["SQL queries", "Schema explanations", "Data exploration", "Report generation"]
+          intelligenceAssistiveItems: ["Pipeline drafting", "SQL queries", "Schema explanations", "Data exploration"]
         },
         transparencyTitle: "Operational transparency",
         transparencyItems: [
@@ -175,7 +175,9 @@ const resources = {
             "Monitoring",
             "Data sources",
             "Installation",
-            "AI Agent"
+            "AI Agent",
+            "dltHub integration",
+            "Open Source"
           ]
           ,
           followUps: [
@@ -196,60 +198,58 @@ const resources = {
       home: {
         title: "e2e‑Data",
         lead: "Suporte end‑to‑end da coleta à visualização",
-        heroBody: "A e2e‑Data é uma plataforma de dados que simplifica todo o fluxo — desde a ingestão de ficheiros e buckets, passando por transformações inteligentes, até ao armazenamento e análise final. Foi criada para equipas que precisam de pipelines rápidos, seguros e fáceis de manter.",
+        heroBody: "e2e-Data é uma Plataforma de Dados Open Source que simplifica o ciclo de vida ETL/ELT ao preencher a lacuna entre a visualização de alto nível e a engenharia Python de baixo nível. Ao alavancar o dltHub, fornecemos um motor de alto desempenho envolvido numa interface intuitiva low-code onde os pipelines são construídos desenhando diagramas e ligando nós.",
         ctaDocs: "Ler documentação",
         featuresTitle: "Porquê usar a e2e‑Data?",
         features: {
-          e2eTitle: "Pipelines end‑to‑end",
-          e2eDesc: "Da ingestão à análise num fluxo único e coerente. Criar pipelines nunca foi tão simples — arraste, configure e execute.",
-          docsTitle: "Documentação clara",
-          docsDesc: "Guias detalhados e documentação estruturada com MkDocs. Ideal tanto para equipas técnicas como para utilizadores não técnicos.",
-          chatTitle: "Chat assistivo",
-          chatDesc: "Chatbot integrado à documentação para tirar dúvidas na hora. Basta perguntar e receber respostas com contexto."
+          e2eTitle: "Engenharia Visual",
+          e2eDesc: "Arquiteta fluxos de dados complexos numa tela interativa. O diagrama é a lógica.",
+          docsTitle: "Nós Potenciados por Código",
+          docsDesc: "Cada nó é suportado por lógica otimizada em Python e dltHub, garantindo alto desempenho sem a sobrecarga de codificação manual.",
+          chatTitle: "AI-Architect",
+          chatDesc: "Descreve o teu objetivo em linguagem simples, e a IA fará o esboço do diagrama para ti—selecionando os nós apropriados e estabelecendo o fluxo."
         },
-        architectureTitle: "Arquitetura da Plataforma",
-        architectureAlt: "Diagrama de Arquitetura da Plataforma e2e-Data",
-        cycleTitle: "O ciclo do dado",
+        cycleTitle: "Como funciona o ciclo de dados",
         cycleLabels: {
-          collect: "Coletar",
+          collect: "Extrair",
           transform: "Transformar",
           validate: "Validar",
-          store: "Armazenar",
+          store: "Carregar",
           visualize: "Visualizar",
           analyze: "Analisar"
         },
         cycleDesc: {
-          collect: "Receba dados de buckets S3 públicos ou ficheiros locais.",
-          transform: "Aplique regras, normalizações e transformações no‑code.",
-          validate: "Garanta integridade, formato e coerência dos dados.",
-          store: "Armazenamento eficiente em DuckDB.",
-          visualize: "Explore resultados com SQL Editor ou AI Agent.",
-          analyze: "Obtenha insights rápidos e acionáveis."
+          collect: "Recebe dados de buckets S3 públicos, ficheiros locais ou Bases de Dados SQL.",
+          transform: "Aplica transformações visuais ou lógica Python personalizada.",
+          validate: "Garante integridade dos dados com gestão de esquema do dltHub.",
+          store: "Armazenamento eficiente em DuckDB ou warehouses externos.",
+          visualize: "Explora resultados com SQL Editor ou Agente de IA.",
+          analyze: "Obtém insights rápidos e acionáveis."
         },
-        cycleOutro: "A e2e‑Data combina simplicidade com potência técnica, permitindo que empresas criem soluções de dados completas sem complicações."
+        cycleOutro: "A e2e‑Data combina simplicidade com poder técnico, permitindo às empresas construir soluções de dados completas sem complicações."
       },
       product: {
         title: "Produto",
-        lead: "A e2e‑Data nasceu com o propósito de simplificar a engenharia de dados moderna.",
-        body1: "Num contexto onde empresas precisam de transformar dados rapidamente, integrar fontes heterogéneas e criar processos repetíveis, a plataforma oferece uma abordagem clara:",
-        body2: "menos código, mais resultados.",
-        pills: { mission: "Missão", platform: "Plataforma", transparency: "Transparência", audience: "Público‑alvo" },
+        lead: "A e2e‑Data nasceu para simplificar a engenharia de dados moderna.",
+        body1: "Num contexto onde as empresas precisam de transformar dados rapidamente, integrar fontes heterogéneas e criar processos repetíveis, a plataforma oferece uma abordagem clara:",
+        body2: "design visual, poder de código.",
+        pills: { mission: "Missão", platform: "Plataforma", transparency: "Transparência", audience: "Público-alvo" },
         missionTitle: "A nossa missão",
-        missionBody: "Permitir que qualquer equipa — técnica ou não — consiga criar pipelines de dados completos, desde a ingestão à análise, com a máxima eficiência e transparência.",
+        missionBody: "Preencher a lacuna entre engenharia e análise, permitindo a qualquer equipa construir pipelines prontos para produção com a robustez do Python e a simplicidade do low-code.",
         missionCta: "Ver documentação",
         platformTitle: "O que a plataforma oferece",
         platform: {
           pipelinesVisualTitle: "Pipelines visuais",
-          pipelinesVisualDesc: "Construa pipelines de dados arrastando nós, ligando etapas e configurando cada fase de forma intuitiva.",
-          supportMultipleTitle: "Suporte a múltiplas origens de dados",
-          supportMultipleItems: ["Buckets S3 públicos", "Ficheiros locais", "Futuros conectores (BigQuery, GSheets, PostgreSQL)"],
+          pipelinesVisualDesc: "Constrói pipelines arrastando nós. A plataforma gera o código Python/dlt subjacente por ti.",
+          supportMultipleTitle: "Suporte para múltiplas fontes de dados",
+          supportMultipleItems: ["Buckets S3 públicos", "Ficheiros locais (CSV, Parquet, JSONL)", "Bases de Dados SQL (Postgres, Oracle, etc.)"],
           transformIntelligentTitle: "Transformações inteligentes",
-          transformIntelligentItems: ["Normalizações", "Condições", "Alterações de formato", "Code transformations", "Cadeias de transformação encadeadas"],
-          storageEfficientTitle: "Armazenamento eficiente",
-          storageEfficientDesc: "Todos os dados fluem para DuckDB, garantindo rapidez, baixo custo e análise local ou cloud.",
+          transformIntelligentItems: ["Transformações visuais no-code", "Scripts Python personalizados", "Gestão de evolução de esquema"],
+          storageEfficientTitle: "Armazenamento flexível",
+          storageEfficientDesc: "Os dados fluem para DuckDB para análise local ou podem ser encaminhados para warehouses externos via destinos dltHub.",
           intelligenceAssistiveTitle: "Inteligência assistiva",
-          intelligenceAssistiveIntro: "O AI Agent ajuda com:",
-          intelligenceAssistiveItems: ["consultas SQL", "explicações do esquema", "exploração de dados", "geração de relatórios"]
+          intelligenceAssistiveIntro: "O Agente de IA ajuda com:",
+          intelligenceAssistiveItems: ["Esboço de pipeline", "Queries SQL", "Explicações de esquema", "Exploração de dados"]
         },
         transparencyTitle: "Transparência operacional",
         transparencyItems: [
@@ -350,18 +350,20 @@ const resources = {
           showTopics: "Mostrar tópicos",
           hideTopics: "Ocultar tópicos",
           suggestions: [
-            "Como criar pipeline",
+            "Criar pipeline",
             "Conectores suportados",
             "Transformações",
             "Armazenamento DuckDB",
             "Logs e transparência",
-            "Referência de API",
-            "Visão da arquitetura",
+            "API Reference",
+            "Visão geral da arquitetura",
             "Orquestração",
             "Monitorização",
             "Fontes de dados",
             "Instalação",
-            "AI Agent"
+            "Agente de IA",
+            "Integração dltHub",
+            "Open Source"
           ]
           ,
           followUps: [

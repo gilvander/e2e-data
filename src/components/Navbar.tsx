@@ -32,7 +32,7 @@ export default function Navbar() {
     { to: "/", label: t("nav.home"), icon: Home },
     { to: "/product", label: t("nav.product"), icon: Package },
     { to: "/developers", label: t("nav.developers"), icon: Code },
-    { to: "/documentation", label: t("nav.docs"), icon: BookOpen },
+    { to: "/docs/en/", label: t("nav.docs"), icon: BookOpen, external: true },
     { to: "/help", label: t("nav.help"), icon: HelpCircle },
   ]
 
@@ -54,9 +54,15 @@ export default function Navbar() {
           </NavLink>
           <nav className="desktop-nav">
             {links.map(link => (
-              <NavLink key={link.to} to={link.to} className={({ isActive }) => isActive ? "active" : undefined}>
-                {link.label}
-              </NavLink>
+              link.external ? (
+                <a key={link.to} href={link.to} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              ) : (
+                <NavLink key={link.to} to={link.to} className={({ isActive }) => isActive ? "active" : undefined}>
+                  {link.label}
+                </NavLink>
+              )
             ))}
           </nav>
           <div className="toolbar">
@@ -81,15 +87,28 @@ export default function Navbar() {
             </div>
             <div className="mobile-links">
               {links.map(link => (
-                <NavLink 
-                  key={link.to} 
-                  to={link.to} 
-                  onClick={() => setMobileOpen(false)}
-                  className={({ isActive }) => isActive ? "active" : undefined}
-                >
-                  <link.icon size={20} className="nav-icon" />
-                  {link.label}
-                </NavLink>
+                link.external ? (
+                  <a 
+                    key={link.to} 
+                    href={link.to} 
+                    onClick={() => setMobileOpen(false)}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <link.icon size={20} className="nav-icon" />
+                    {link.label}
+                  </a>
+                ) : (
+                  <NavLink 
+                    key={link.to} 
+                    to={link.to} 
+                    onClick={() => setMobileOpen(false)}
+                    className={({ isActive }) => isActive ? "active" : undefined}
+                  >
+                    <link.icon size={20} className="nav-icon" />
+                    {link.label}
+                  </NavLink>
+                )
               ))}
             </div>
             <div className="mobile-drawer-footer">

@@ -1,38 +1,17 @@
-# e2e‑Data / DTC — Documentação Oficial
+# Bem-vindo ao e2e-Data
 
-## Introdução
+**e2e-Data** é uma Plataforma de Dados Open Source que simplifica o ciclo de vida ETL/ELT ao preencher a lacuna entre a visualização de alto nível e a engenharia Python de baixo nível. Ao alavancar o [dltHub](https://dlthub.com/), fornecemos um motor de alto desempenho envolvido numa interface intuitiva low-code onde os pipelines são construídos desenhando diagramas e ligando nós.
 
-O e2e‑Data (Data‑to‑Cloud, DTC) é uma plataforma para criação de pipelines de dados end‑to‑end: ingestão, transformação, armazenamento, visualização e análise. O MVP1 foca em fluxos simples, seguros e rápidos, integrando fontes públicas e sistema de ficheiros com execução local em DuckDB, suporte a transformações e um agente de IA para consultas.
+## Propostas de Valor Centrais
 
-### Principais funcionalidades
-- Pipelines visuais com nós pré‑definidos
-- Ingestão de dados a partir de S3 público e sistema de ficheiros
-- Transformações no‑code e com linguagem de script
-- Armazenamento local em DuckDB
-- Logs detalhados e histórico de execuções
-- SQL Editor e AI Agent para exploração
-- Agendamento simples (minutário/horário)
-- Versionamento de pipelines
+*   **Engenharia Visual:** Arquiteta fluxos de dados complexos numa tela interativa. O diagrama é a lógica.
+*   **AI-Architect:** Descreve o teu objetivo em linguagem simples, e a IA fará o esboço do diagrama para ti—selecionando os nós apropriados e estabelecendo o fluxo para começares instantaneamente.
+*   **Nós Potenciados por Código:** Cada nó é suportado por lógica otimizada em Python e dltHub, garantindo alto desempenho sem a sobrecarga de codificação manual.
+*   **Seguro & Escalável:** Transita de um rascunho visual para um pipeline pronto para produção com gestão integrada de segredos, agendamento automatizado e um motor de execução escalável.
 
-### Conceitos
-- Pipeline: gráfico de nós que define o fluxo de dados
-- Ingestão: entrada de dados (S3, sistema de ficheiros)
-- Transformação: aplicação de regras/alterações
-- Agendamento: execução periódica do pipeline
-- AI Agent: assistente para consultas e explicações
-- S3 bucket: armazenamento de objetos (público no MVP1)
-- File system: diretório local do servidor
-- DuckDB: base de dados embebida para armazenamento e análise
-- DT core: motor interno de execução de nós (Data Tool)
-- Tenant/namespace: escopo lógico para separar dados/recursos
+## Quando usar o e2e-Data
 
-### Estrutura da documentação
-- Guia do Utilizador (primeiros passos)
-- Pipelines e nós disponíveis
-- Transformações
-- Agendamento
-- Versionamento
-- Editor de Código (DT Script Viewer)
-- Instalação (ambiente de desenvolvimento)
-- AI Agent
-- Secção final (limitações, roadmap, segurança, performance)
+*   **Preencher a Lacuna de Engenharia:** Ideal para equipas onde Analistas usam o AI-Architect e a Tela Visual enquanto Engenheiros reveem ou estendem o código Python gerado automaticamente.
+*   **Prototipagem Rápida para Produção:** Passa de um "esboço" para um pipeline de produção agendado sem reescrever lógica.
+*   **Visibilidade sobre a Gestão de Esquema do dltHub:** O e2e-Data aproveita o dltHub para lidar automaticamente com alterações nos dados de origem (como novas colunas). A plataforma fornece uma interface visual para monitorizar estas mudanças de esquema através da secção **DLT Pipelines Outputs**, garantindo que tens uma visão clara da tua estrutura de dados sem precisares de gerir a lógica de esquema subjacente manualmente.
+*   **Manuseamento Seguro de Dados:** Gere centralmente chaves de API e segredos SQL nas **Connection Settings** para que nunca apareçam em texto simples na tua tela nem no código do teu pipeline.

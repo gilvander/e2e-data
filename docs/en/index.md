@@ -1,38 +1,17 @@
-# e2e‑Data / DTC — Official Documentation
+# Welcome to e2e-Data
 
-## Introduction
+**e2e-Data** is an Open Source Data Platform that simplifies the ETL/ELT lifecycle by bridging the gap between high-level visualization and low-level Python engineering. By leveraging [dltHub](https://dlthub.com/), we provide a high-performance engine wrapped in an intuitive low-code interface where pipelines are built by designing diagrams and connecting nodes.
 
-e2e‑Data (Data‑to‑Cloud, DTC) is a platform to build end‑to‑end data pipelines: ingestion, transformation, storage, visualization and analysis. MVP1 focuses on simple, safe and fast flows, integrating public sources and local filesystem with local execution on DuckDB, transformations and an AI agent for queries.
+## Core Value Propositions
 
-### Key features
-- Visual pipelines with predefined nodes
-- Data ingestion from public S3 and local filesystem
-- No‑code and script‑based transformations
-- Local storage on DuckDB
-- Detailed logs and execution history
-- SQL Editor and AI Agent for data exploration
-- Simple scheduling (minutely/hourly)
-- Pipeline versioning
+*   **Visual Engineering:** Architect complex data flows on an interactive canvas. The diagram is the logic.
+*   **AI-Architect:** Describe your goal in plain English, and the AI will draft the diagram for you—selecting the appropriate nodes and establishing the flow to get you started instantly.
+*   **Code-Powered Nodes:** Every node is backed by optimized Python and dltHub logic, ensuring high performance without the manual coding overhead.
+*   **Secure & Scalable:** Transition from a visual draft to a production-ready pipeline with integrated secret management, automated scheduling, and a scalable execution engine.
 
-### Concepts
-- Pipeline: graph of nodes defining the data flow
-- Ingestion: data input (S3, filesystem)
-- Transformation: applying rules/changes
-- Scheduling: periodic pipeline execution
-- AI Agent: assistant for queries and explanations
-- S3 bucket: object storage (public in MVP1)
-- File system: local server directory
-- DuckDB: embedded database for storage and analysis
-- DT core: internal engine for node execution (Data Tool)
-- Tenant/namespace: logical scope to separate data/resources
+## When to use e2e-Data
 
-### Documentation structure
-- User Guide (getting started)
-- Pipelines and available nodes
-- Transformations
-- Scheduling
-- Versioning
-- Script Viewer (DT Script Viewer)
-- Installation (development environment)
-- AI Agent
-- Final section (limitations, roadmap, security, performance)
+*   **Bridging the Engineering Gap:** Ideal for teams where Analysts use the AI-Architect and Visual Canvas while Engineers review or extend the auto-generated Python code.
+*   **Rapid Prototyping to Production:** Move from a "sketch" to a scheduled production pipeline without re-writing logic.
+*   **Visibility into dltHub’s Schema Management:** e2e-Data leverages dltHub to handle source data changes (like new columns) automatically. The platform provides a visual interface to monitor these schema shifts via the **DLT Pipelines Outputs** section, ensuring you have a clear view of your data structure without needing to manage the underlying schema logic manually.
+*   **Secure Data Handling:** Centrally manage API keys and SQL secrets in **Connection Settings** so they never appear in plain text on your canvas nor in your pipeline code.
