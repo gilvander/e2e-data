@@ -209,20 +209,18 @@ const resources = {
           showTopics: "Show topics",
           hideTopics: "Hide topics",
           suggestions: [
-            "Create pipeline",
-            "Supported connectors",
+            "Create my first pipeline",
+            "Connections and secrets",
+            "Sources and destinations",
             "Transformations",
-            "DuckDB storage",
-            "Logs and transparency",
-            "API Reference",
-            "Architecture overview",
-            "Orchestration",
-            "Monitoring",
-            "Data sources",
-            "Installation",
+            "Data Catalog",
+            "Data Viz and analytics",
+            "Scheduling",
+            "Monitoring and logs",
+            "Versioning",
             "AI Agent",
-            "dltHub integration",
-            "Open Source"
+            "Architecture",
+            "Installation"
           ]
           ,
           followUps: [
@@ -440,20 +438,18 @@ const resources = {
           showTopics: "Mostrar tópicos",
           hideTopics: "Ocultar tópicos",
           suggestions: [
-            "Criar pipeline",
-            "Conectores suportados",
+            "Criar o meu primeiro pipeline",
+            "Ligações e segredos",
+            "Fontes e destinos",
             "Transformações",
-            "Armazenamento DuckDB",
-            "Logs e transparência",
-            "API Reference",
-            "Visão geral da arquitetura",
-            "Orquestração",
-            "Monitorização",
-            "Fontes de dados",
-            "Instalação",
+            "Data Catalog",
+            "Data Viz e analytics",
+            "Agendamento",
+            "Monitorização e logs",
+            "Versionamento",
             "Agente de IA",
-            "Integração dltHub",
-            "Open Source"
+            "Arquitetura",
+            "Instalação"
           ]
           ,
           followUps: [

@@ -57,6 +57,7 @@ nav:
     - Getting Started: en/getting-started.md
     - Workspace Interface: en/workspace.md
     - Connections & Secrets: en/connections.md
+    - Source Integration: en/source-integration.md
     - Pipeline Designer: en/pipelines.md
     - Transformations: en/transformations.md
     - Data Catalog: en/data-catalog.md
@@ -74,6 +75,7 @@ nav:
     - Guia do Utilizador: pt/getting-started.md
     - Interface do Workspace: pt/workspace.md
     - Ligações & Segredos: pt/connections.md
+    - Integração de Fontes: pt/source-integration.md
     - Pipelines: pt/pipelines.md
     - Transformações: pt/transformations.md
     - Data Catalog: pt/data-catalog.md

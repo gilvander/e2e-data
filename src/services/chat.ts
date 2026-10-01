@@ -33,70 +33,72 @@ export function createMessage(role: "user" | "bot", text: string): ChatMessage {
 }
 
 type DocIndexItem = { title: string; location: string; text: string }
-let cachedPt: DocIndexItem[] | null = null
-let cachedEn: DocIndexItem[] | null = null
+let cachedAll: DocIndexItem[] | null = null
 
-async function loadDocIndex(lang: string): Promise<{ items: DocIndexItem[]; base: string }> {
-  const paths = lang.startsWith("pt")
-    ? ["/site/pt/search/search_index.json", "/site/search/search_index.json", "/docs/search/search_index.json"]
-    : ["/site/en/search/search_index.json", "/site/search/search_index.json", "/docs/search/search_index.json"]
+/** Pages that are part of the documentation menu (see mkdocs.yml). Leftover draft pages are not searched. */
+const DOC_PAGES = new Set([
+  "index", "getting-started", "workspace", "connections", "source-integration", "pipelines", "transformations", "data-catalog",
+  "analytics", "scheduling", "versioning", "editor", "monitoring", "architecture", "installation", "ai-agent", "final",
+])
+
+function isNavPage(location: string, lang: string): boolean {
+  const [path] = location.split("#")
+  const m = path.match(new RegExp(`^${lang}/(?:([a-z-]+)/)?$`))
+  if (!m) return false
+  return m[1] === undefined ? true : DOC_PAGES.has(m[1])
+}
+
+function decode(s: string): string {
+  return s.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+}
+
+const STOP = new Set([
+  "de", "da", "do", "das", "dos", "a", "o", "as", "os", "um", "uma", "e", "em", "no", "na", "nos", "nas", "para", "por", "com", "que", "como", "se", "ao", "ou", "me", "te", "eu", "tu",
+  "the", "of", "to", "in", "on", "and", "or", "is", "are", "for", "with", "how", "do", "does", "can", "i", "my", "an", "it", "what",
+])
+
+/** Lowercase and strip accents so "configuração" matches "configuracao". */
+function fold(s: string): string {
+  return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+}
+
+function tokens(query: string): string[] {
+  return fold(query).split(/[^a-z0-9]+/).filter((w) => w.length > 1 && !STOP.has(w))
+}
+
+async function loadDocIndex(): Promise<DocIndexItem[]> {
+  if (cachedAll) return cachedAll
+  const paths = ["/docs/search/search_index.json", "/site/search/search_index.json"]
   for (const p of paths) {
     try {
       const res = await fetch(p)
       if (!res.ok) continue
       const data = await res.json()
-      const items = Array.isArray(data.docs) ? data.docs as DocIndexItem[] : []
-      const base = p.replace(/search\/search_index\.json$/, "")
-      return { items, base }
+      cachedAll = Array.isArray(data.docs) ? (data.docs as DocIndexItem[]) : []
+      return cachedAll
     } catch { continue }
   }
-  return { items: [], base: "/docs/" }
+  return []
 }
 
-function score(text: string, query: string): number {
-  const q = query.toLowerCase().split(/\s+/).filter(Boolean)
-  const t = text.toLowerCase()
-  let s = 0
-  for (const w of q) {
-    const m = t.split(w).length - 1
-    s += m
+/** Rank one index entry: title hits weigh more, repeated body hits are capped, coverage of all words matters. */
+function scoreItem(item: DocIndexItem, words: string[]): number {
+  if (!words.length) return 0
+  const title = fold(item.title)
+  const text = fold(clean(item.text))
+  let total = 0
+  let matched = 0
+  for (const w of words) {
+    let hit = false
+    if (title.includes(w)) { total += 6; hit = true }
+    const n = text.split(w).length - 1
+    if (n > 0) { total += Math.min(n, 5); hit = true }
+    if (hit) matched += 1
   }
-  return s
-}
-
-function normalizeQuery(query: string, lang: string): string {
-  if (lang.startsWith("pt")) {
-    const map: Record<string, string> = {
-      "conectores": "connectors",
-      "conector": "connector",
-      "transformações": "transformations",
-      "transformacao": "transformation",
-      "armazenamento": "storage",
-      "instalação": "installation",
-      "instalacao": "installation",
-      "orquestração": "orchestration",
-      "orquestracao": "orchestration",
-      "monitorização": "monitoring",
-      "monitorizacao": "monitoring",
-      "fontes de dados": "data sources",
-      "dados": "data",
-      "transparência": "transparency",
-      "transparencia": "transparency",
-      "logs": "logs",
-      "pipeline": "pipeline",
-      "pipelines": "pipelines",
-      "duckdb": "duckdb",
-      "api": "api",
-      "agente": "agent",
-      "ai": "ai",
-    }
-    let q = query.toLowerCase()
-    for (const [pt, en] of Object.entries(map)) {
-      q = q.replace(new RegExp(pt, "g"), en)
-    }
-    return q
-  }
-  return query
+  if (!matched) return 0
+  total *= matched / words.length
+  if (!item.location.includes("#")) total *= 1.3 // whole-page entries are better entry points
+  return total
 }
 
 function makeReply(results: Array<{ item: DocIndexItem; score: number }>, base: string): string {
@@ -110,11 +112,11 @@ function makeReply(results: Array<{ item: DocIndexItem; score: number }>, base: 
     if (steps.length) {
       const limited = steps.slice(0, 3)
       const list = limited.map((s, i) => `${i + 1}) ${s}`).join("\n")
-      return `• ${item.title}\n${i18n.t("chat.stepsIntro")}\n${list}\nLink: ${url}`
+      return `• ${decode(item.title)}\n${i18n.t("chat.stepsIntro")}\n${decode(list)}\nLink: ${url}`
     }
     const pre = extractInstructionalText(item.text)
     const snippet = pre.length > 360 ? `${pre.slice(0, 357)}...` : pre
-    return `• ${item.title}\n${snippet}\nLink: ${url}`
+    return `• ${decode(item.title)}\n${decode(snippet)}\nLink: ${url}`
   })
   const intro = i18n.t("chat.replyIntro")
   return `${intro}\n\n${parts.join("\n\n")}`
@@ -122,23 +124,23 @@ function makeReply(results: Array<{ item: DocIndexItem; score: number }>, base: 
 
 export const docTransport: ChatTransport = {
   async send(text: string) {
-    const lang = (i18n.language || "pt").toLowerCase()
-    const cache = lang.startsWith("pt") ? cachedPt : cachedEn
-    let items = cache
-    let base = lang.startsWith("pt") ? "/site/pt/search/" : "/site/en/search/"
-    if (!items) {
-      const loaded = await loadDocIndex(lang)
-      items = loaded.items
-      base = loaded.base
-      if (lang.startsWith("pt")) cachedPt = items
-      else cachedEn = items
-    }
-    const q = normalizeQuery(text, lang)
+    const lang = (i18n.language || "pt").toLowerCase().startsWith("pt") ? "pt" : "en"
+    // Only search pages in the visitor's language; ignore leftover pages outside en/ and pt/.
+    const items = (await loadDocIndex()).filter((it) => isNavPage(it.location, lang))
+    const words = tokens(text)
     const ranked = items
-      .map((it) => ({ item: it, score: score(`${it.title} ${it.text}`, q) }))
+      .map((item) => ({ item, score: scoreItem(item, words) }))
       .filter((r) => r.score > 0)
       .sort((a, b) => b.score - a.score)
-    return makeReply(ranked, base)
+    // Keep one result per page so the two answers are different pages.
+    const seen = new Set<string>()
+    const distinct = ranked.filter((r) => {
+      const page = r.item.location.split("#")[0]
+      if (seen.has(page)) return false
+      seen.add(page)
+      return true
+    })
+    return makeReply(distinct, "/docs/")
   },
 }
 

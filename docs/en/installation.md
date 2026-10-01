@@ -8,6 +8,7 @@ e2e-Data has three parts: the **backend** (Python/Flask API that runs your pipel
 *   Docker (needed for Vault, and for the all-in-one Docker setup)
 *   `make` (local setup; on macOS `xcode-select --install`, on Linux `build-essential`, on Windows use `choco`/`scoop`/`winget` or WSL)
 *   Node.js and NPM, to install the Still.js CLI (`npm install -g @stilljs/cli`)
+*   SQL Server only: Microsoft ODBC Driver 18 and unixODBC (see [SQL Server dependencies](#sql-server-dependencies))
 *   Optional: the DuckDB CLI and [`uv`](https://docs.astral.sh/uv/) (the Makefile uses `uv` automatically when it is installed)
 
 ## Option A: Docker Compose
@@ -60,6 +61,52 @@ st serve
 ```
 
 Then open the address printed by the CLI (normally `http://localhost:8080`). That address must be listed in `ALLOW_ORIGINS` on the backend.
+
+## Nginx: serving the UI
+
+The frontend is a set of static files, so any web server can host it. The Docker Compose setup uses the `nginx:alpine` image.
+
+| Item | Value |
+| :--- | :--- |
+| Image | `nginx:alpine` (service `nginx`) |
+| Port | `8080` |
+| Web root | the `ui/` folder, mounted at `/usr/share/nginx/html` |
+| Configuration | `nginx/default.conf`, mounted at `/etc/nginx/conf.d/default.conf` |
+
+The configuration listens on 8080, serves `ui/` and falls back to `index.html` for any path that is not a file:
+
+```nginx
+server {
+    listen 8080;
+
+    location / {
+        root /usr/share/nginx/html;
+        index index.html;
+        try_files $uri /index.html;
+    }
+}
+```
+
+Things to know:
+
+*   **No proxy is required.** The browser talks to the backend directly, using `httpClient.baseUrl` and `websocketAddr` from `ui/config/settings`. Update both if the backend runs on another host or port.
+*   **CORS:** the address you open in the browser (for example `http://localhost:8080`) must be listed in `ALLOW_ORIGINS` on the backend.
+*   **Running without Docker:** point your own Nginx (or Apache) at the `ui/` folder with the same `try_files` rule, or use `st serve` for development.
+*   **Production:** terminate TLS in Nginx and use `https://` for `httpClient.baseUrl` and `wss://` for `websocketAddr`.
+
+## SQL Server dependencies
+
+To read from or write to **Microsoft SQL Server**, the backend needs an ODBC driver on the machine where it runs (the Python package `pyodbc` is already included in `requirements.txt`):
+
+*   **Microsoft ODBC Driver 18 for SQL Server** (`msodbcsql18`)
+*   **unixODBC** (`unixodbc`) on Linux and macOS
+
+How to get them:
+
+*   **Docker Compose:** nothing to do. The backend image installs both (Debian 12, with the Microsoft package repository).
+*   **Local setup:** install the driver following Microsoft's instructions for your operating system, then restart the backend. On Debian/Ubuntu, for example, install `unixodbc` and `msodbcsql18` (accepting the Microsoft EULA).
+
+If the driver is missing, testing a SQL Server connection in **Connection Settings** fails with an ODBC driver error. Other engines (Oracle, PostgreSQL, MySQL/MariaDB) do not need this driver. See [Source Integration](source-integration.md).
 
 ## Backend configuration (`backend/src/.env`)
 

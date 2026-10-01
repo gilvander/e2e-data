@@ -8,6 +8,7 @@ O e2e-Data tem três partes: o **backend** (API Python/Flask que executa os teus
 *   Docker (necessário para o Vault e para a instalação Docker completa)
 *   `make` (instalação local; no macOS `xcode-select --install`, no Linux `build-essential`, no Windows usa `choco`/`scoop`/`winget` ou WSL)
 *   Node.js e NPM, para instalar o CLI do Still.js (`npm install -g @stilljs/cli`)
+*   Só para SQL Server: Microsoft ODBC Driver 18 e unixODBC (vê [Dependências do SQL Server](#dependencias-do-sql-server))
 *   Opcional: o CLI do DuckDB e o [`uv`](https://docs.astral.sh/uv/) (o Makefile usa o `uv` automaticamente quando está instalado)
 
 ## Opção A: Docker Compose
@@ -60,6 +61,52 @@ st serve
 ```
 
 Depois abre o endereço mostrado pelo CLI (normalmente `http://localhost:8080`). Esse endereço tem de constar em `ALLOW_ORIGINS` no backend.
+
+## Nginx: servir a UI
+
+O frontend é um conjunto de ficheiros estáticos, por isso qualquer servidor web o pode alojar. A instalação com Docker Compose usa a imagem `nginx:alpine`.
+
+| Item | Valor |
+| :--- | :--- |
+| Imagem | `nginx:alpine` (serviço `nginx`) |
+| Porta | `8080` |
+| Raiz web | a pasta `ui/`, montada em `/usr/share/nginx/html` |
+| Configuração | `nginx/default.conf`, montada em `/etc/nginx/conf.d/default.conf` |
+
+A configuração escuta na 8080, serve a pasta `ui/` e devolve o `index.html` para qualquer caminho que não seja um ficheiro:
+
+```nginx
+server {
+    listen 8080;
+
+    location / {
+        root /usr/share/nginx/html;
+        index index.html;
+        try_files $uri /index.html;
+    }
+}
+```
+
+O que convém saber:
+
+*   **Não é preciso proxy.** O browser comunica diretamente com o backend, através de `httpClient.baseUrl` e `websocketAddr` em `ui/config/settings`. Atualiza ambos se o backend correr noutro servidor ou porta.
+*   **CORS:** o endereço que abres no browser (por exemplo `http://localhost:8080`) tem de constar em `ALLOW_ORIGINS` no backend.
+*   **Sem Docker:** aponta o teu Nginx (ou Apache) para a pasta `ui/` com a mesma regra `try_files`, ou usa `st serve` em desenvolvimento.
+*   **Produção:** termina o TLS no Nginx e usa `https://` em `httpClient.baseUrl` e `wss://` em `websocketAddr`.
+
+## Dependências do SQL Server
+
+Para ler ou escrever em **Microsoft SQL Server**, o backend precisa de um driver ODBC na máquina onde corre (o pacote Python `pyodbc` já vem no `requirements.txt`):
+
+*   **Microsoft ODBC Driver 18 for SQL Server** (`msodbcsql18`)
+*   **unixODBC** (`unixodbc`) em Linux e macOS
+
+Como os obter:
+
+*   **Docker Compose:** não tens de fazer nada. A imagem do backend instala ambos (Debian 12, com o repositório de pacotes da Microsoft).
+*   **Instalação local:** instala o driver seguindo as instruções da Microsoft para o teu sistema operativo e reinicia o backend. Em Debian/Ubuntu, por exemplo, instala `unixodbc` e `msodbcsql18` (aceitando o EULA da Microsoft).
+
+Se o driver faltar, o teste de uma ligação SQL Server em **Connection Settings** falha com um erro de driver ODBC. Os outros motores (Oracle, PostgreSQL, MySQL/MariaDB) não precisam deste driver. Vê [Integração de Fontes](source-integration.md).
 
 ## Configuração do backend (`backend/src/.env`)
 
