@@ -1,9 +1,10 @@
 import { motion } from "framer-motion"
 import { HelpCircle } from "lucide-react"
 import { useTranslation, Trans } from "react-i18next"
+import { docsUrl } from "../lib/links"
 
 export default function Help() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <>
@@ -12,6 +13,7 @@ export default function Help() {
           <HelpCircle className="brand-icon" />
           <h1>{t("help.title")}</h1>
           <p className="lead">{t("help.lead")}</p>
+          <a className="btn primary" href={docsUrl(i18n.language)}>{t("help.docsLink")}</a>
         </motion.div>
       </section>
 
@@ -47,7 +49,7 @@ export default function Help() {
               <ol className="steps">
                 {(t("help.cards.env.steps", { returnObjects: true }) as string[]).map((_, i) => (
                   <li key={i}>
-                    <Trans i18nKey={`help.cards.env.steps.${i}`} components={{ 1: <strong />, 3: <strong /> }} />
+                    <Trans i18nKey={`help.cards.env.steps.${i}`} components={{ 1: <strong /> }} />
                   </li>
                 ))}
               </ol>

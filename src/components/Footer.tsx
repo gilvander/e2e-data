@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next"
-import { Twitter, Youtube, Linkedin } from "lucide-react"
+import { DEMO_URL, docsUrl } from "../lib/links"
 
 export default function Footer() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const year = new Date().getFullYear()
   return (
     <footer className="footer">
@@ -14,13 +14,11 @@ export default function Footer() {
       <div className="footer-legal">
         <div className="legal-left">{t("footer.rights", { year })}</div>
         <div className="legal-links">
-          <a href="/documentation">{t("nav.docs")}</a>
+          <a href={docsUrl(i18n.language)}>{t("nav.docs")}</a>
           <span className="sep" />
           <a href="/help">{t("nav.help")}</a>
           <span className="sep" />
-          <a href="https://twitter.com" aria-label="Twitter"><Twitter size={16} /></a>
-          <a href="https://youtube.com" aria-label="YouTube" style={{ marginLeft: 8 }}><Youtube size={16} /></a>
-          <a href="https://www.linkedin.com" aria-label="LinkedIn" style={{ marginLeft: 8 }}><Linkedin size={16} /></a>
+          <a href={DEMO_URL} target="_blank" rel="noreferrer">{t("common.demoUrlLabel")}</a>
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { GitBranch, Globe, Wrench, Database, Bot, FileText, Eye, History, Users, BarChart3, FlaskConical, Rocket } from "lucide-react"
+import { GitBranch, Globe, Wrench, Library, Bot, ShieldCheck, FileText, Eye, History, Users, BarChart3, FlaskConical, Rocket, Check, Clock } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import "./About.css"
 
@@ -8,7 +8,7 @@ export default function About() {
   const { t } = useTranslation()
   const [active, setActive] = useState("plataforma")
   useEffect(() => {
-    const ids = ["plataforma", "transparencia", "publico"]
+    const ids = ["plataforma", "transparencia", "publico", "roadmap"]
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -38,6 +38,7 @@ export default function About() {
           <a className={`pill${active === "plataforma" ? " active" : ""}`} href="#plataforma">{t("product.pills.platform")}</a>
           <a className={`pill${active === "transparencia" ? " active" : ""}`} href="#transparencia">{t("product.pills.transparency")}</a>
           <a className={`pill${active === "publico" ? " active" : ""}`} href="#publico">{t("product.pills.audience")}</a>
+          <a className={`pill${active === "roadmap" ? " active" : ""}`} href="#roadmap">{t("product.pills.roadmap")}</a>
         </div>
       </section>
 
@@ -77,9 +78,13 @@ export default function About() {
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.15 }}>
             <div className="card">
-              <div className="icon"><Database /></div>
-              <h3>{t("product.platform.storageEfficientTitle")}</h3>
-              <p>{t("product.platform.storageEfficientDesc")}</p>
+              <div className="icon"><Library /></div>
+              <h3>{t("product.platform.catalogTitle")}</h3>
+              <ul>
+                {(t("product.platform.catalogItems", { returnObjects: true }) as string[]).map((it) => (
+                  <li key={it}>{it}</li>
+                ))}
+              </ul>
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.2 }}>
@@ -89,6 +94,17 @@ export default function About() {
               <p>{t("product.platform.intelligenceAssistiveIntro")}</p>
               <ul>
                 {(t("product.platform.intelligenceAssistiveItems", { returnObjects: true }) as string[]).map((it) => (
+                  <li key={it}>{it}</li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.25 }}>
+            <div className="card">
+              <div className="icon"><ShieldCheck /></div>
+              <h3>{t("product.platform.secureTitle")}</h3>
+              <ul>
+                {(t("product.platform.secureItems", { returnObjects: true }) as string[]).map((it) => (
                   <li key={it}>{it}</li>
                 ))}
               </ul>
@@ -137,6 +153,24 @@ export default function About() {
           })()}
         </motion.ul>
         <p>{t("product.closing")}</p>
+      </section>
+          <section id="roadmap" className="container about-section">
+        <motion.h2 className="section-title" initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>{t("product.roadmapTitle")}</motion.h2>
+        <p className="roadmap-intro">{t("product.roadmapIntro")}</p>
+        <div className="roadmap-grid">
+          <div className="roadmap-col now">
+            <h3><Check size={18} /> {t("product.roadmapNow")}</h3>
+            <ul>
+              {(t("product.roadmapNowItems", { returnObjects: true }) as string[]).map((it) => <li key={it}>{it}</li>)}
+            </ul>
+          </div>
+          <div className="roadmap-col next">
+            <h3><Clock size={18} /> {t("product.roadmapNext")}</h3>
+            <ul>
+              {(t("product.roadmapNextItems", { returnObjects: true }) as string[]).map((it) => <li key={it}>{it}</li>)}
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
   )

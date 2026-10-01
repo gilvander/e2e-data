@@ -5,9 +5,10 @@ import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import LanguageSwitcher from "./LanguageSwitcher.tsx"
 import ThemeToggle from "./ThemeToggle"
+import { docsUrl } from "../lib/links"
 
 export default function Navbar() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [logoBroken, setLogoBroken] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -32,7 +33,7 @@ export default function Navbar() {
     { to: "/", label: t("nav.home"), icon: Home },
     { to: "/product", label: t("nav.product"), icon: Package },
     { to: "/developers", label: t("nav.developers"), icon: Code },
-    { to: "/docs/en/", label: t("nav.docs"), icon: BookOpen, external: true },
+    { to: docsUrl(i18n.language), label: t("nav.docs"), icon: BookOpen, external: true },
     { to: "/help", label: t("nav.help"), icon: HelpCircle },
   ]
 

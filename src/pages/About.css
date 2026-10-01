@@ -225,3 +225,43 @@
     font-size: 0.9rem;
   }
 }
+
+/* Equal-height, aligned cards */
+.about .grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+.about .grid > div { display: flex; }
+.about .grid > div > .card { flex: 1; }
+@media (max-width: 960px) { .about .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .about .grid { grid-template-columns: 1fr; } }
+.about .card p, .about .card li { color: var(--text); opacity: .9; }
+.about .card ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 6px; }
+.audience-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 28px; list-style: none; padding: 0; }
+.audience-list li { display: flex; align-items: center; gap: 10px; }
+
+/* Roadmap */
+.roadmap-intro { text-align: center; color: var(--text); margin: -1.5rem 0 2rem; }
+.roadmap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.roadmap-col { border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 2rem; background: var(--bg-secondary); }
+.roadmap-col h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 1rem; }
+.roadmap-col.now h3 { color: var(--brand-success); }
+.roadmap-col.next h3 { color: var(--brand-warn); }
+.roadmap-col ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 8px; }
+.roadmap-col li { color: var(--text); }
+@media (max-width: 720px) { .roadmap-grid { grid-template-columns: 1fr; } }
+
+/* Visible, evenly sized cards in Platform / Transparency */
+.about .grid { gap: 1.25rem; }
+.about .card { height: auto; }
+#plataforma .card, #plataforma .card:hover,
+#transparencia .card, #transparencia .card:hover,
+[data-theme="dark"] #plataforma .card, [data-theme="dark"] #transparencia .card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  padding: 1.5rem;
+}
+#plataforma .card:hover, #transparencia .card:hover { border-color: var(--brand-primary); box-shadow: var(--shadow-md); }
+#transparencia .grid { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1100px) { #transparencia .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { #transparencia .grid { grid-template-columns: 1fr; } }
+.about .card .icon { margin-bottom: 1rem; }
+.audience-list li { flex: 0 1 260px; }

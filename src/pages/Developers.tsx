@@ -1,27 +1,17 @@
 import { motion } from "framer-motion"
-import { Code2, Terminal, Users, Github, ArrowRight } from "lucide-react"
+import { Code2, BookOpen, Play, Users, Github, ArrowRight } from "lucide-react"
 import { useTranslation } from "react-i18next"
+import { DEMO_URL, DISCORD_URL, OPEN_SOURCE_URL, docsUrl } from "../lib/links"
 import "./Developers.css"
 
 export default function Developers() {
-  const { t } = useTranslation()
-  
+  const { t, i18n } = useTranslation()
+
   const sections = [
-    {
-      key: "api",
-      icon: Terminal,
-      link: "/docs/api"
-    },
-    {
-      key: "community",
-      icon: Users,
-      link: "https://discord.gg/e2edata"
-    },
-    {
-      key: "opensource",
-      icon: Github,
-      link: "https://github.com/e2e-data"
-    }
+    { key: "docs", icon: BookOpen, link: docsUrl(i18n.language) },
+    { key: "demo", icon: Play, link: DEMO_URL },
+    { key: "community", icon: Users, link: DISCORD_URL },
+    { key: "opensource", icon: Github, link: OPEN_SOURCE_URL },
   ]
 
   return (
@@ -37,7 +27,7 @@ export default function Developers() {
       <section className="container">
         <div className="dev-grid">
           {sections.map((section, idx) => (
-            <motion.div 
+            <motion.div
               key={section.key}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,4 +50,3 @@ export default function Developers() {
     </div>
   )
 }
-

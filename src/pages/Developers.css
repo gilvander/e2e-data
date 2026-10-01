@@ -38,7 +38,7 @@
 
 .dev-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
   padding: 2rem 0;
 }
@@ -116,7 +116,6 @@
 
 [data-theme="dark"] .dev-hero h1 {
   /* Ensure gradient works or fallback to light color */
-  text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 /* Mobile Responsiveness */
@@ -134,3 +133,8 @@
     gap: 1.5rem;
   }
 }
+
+.dev-run { padding-top: 3rem; padding-bottom: 4rem; text-align: center; }
+.dev-run-body, .dev-run-note { color: var(--text); max-width: 680px; margin: 0 auto 1rem; }
+.dev-run-note { font-size: .9rem; color: var(--text-light); margin-top: 1rem; }
+.dev-code { max-width: 680px; margin: 0 auto; text-align: left; padding: 16px 20px; border-radius: 12px; background: #0b1220; color: #e2e8f0; border: 1px solid var(--border); overflow-x: auto; font-size: .85rem; }
