@@ -4,7 +4,7 @@ Interface de linha de comando para tarefas comuns.
 
 ## Comandos
 - `e2e init` – inicializar um pipeline
-- `e2e run` – executar estágios
+- `e2e run` – executar etapas
 - `e2e status` – mostrar estado atual
 
 ## Exemplos

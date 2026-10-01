@@ -63,7 +63,7 @@ Isto fornece o nível mais alto de flexibilidade tanto para lógica simples como
 
 ### 4. Split (Parsing de String)
 Permite-te dividir um único campo em múltiplas novas colunas com base num carácter específico (delimitador).
-*   **Exemplo:** Extrair informação de um endereço de email usando o carácter `@`.
+*   **Exemplo:** Extrair informação de um endereço de e-mail usando o carácter `@`.
 
 ![Exemplo de Split de Transformação](../assets/transformation-split-example.png){ width="50%" }
 

@@ -5,7 +5,7 @@ O e2e-Data regista o que acontece em cada execução de pipeline, para poderes a
 ## Monitor em direto
 
 *   Clica em **Monitor** no Centro de Ação para mostrar/ocultar o log em direto da execução atual.
-*   Os nós mudam de estado na tela à medida que cada passo termina, e os nós que falham mostram o erro.
+*   Os nós mudam de estado no canvas à medida que cada passo termina, e os nós que falham mostram o erro.
 *   As execuções agendadas também enviam o seu output para o monitor, quando a tua sessão no browser está aberta.
 
 ## Menu de logs

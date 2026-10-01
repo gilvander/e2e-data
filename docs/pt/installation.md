@@ -103,7 +103,7 @@ A UI escolhe o ficheiro de configuração automaticamente: `default.json` quando
 | **httpClient.baseUrl** | URL do backend. Tem de coincidir com `APP_SRV_ADDR` (ex.: `http://localhost:8000`). |
 | **websocketAddr** | Endereço websocket do backend, com o caminho `/pipeline` (ex.: `ws://localhost:8000/pipeline`, ou `wss://` atrás de TLS). |
 | **anonymousLogin** | `true` permite iniciar sessão sem autenticação (uso local). |
-| **auth0.domain / auth0.clientId** | Definições Auth0 para login social. Usadas quando `anonymousLogin` é `false`. |
+| **auth0.domain / auth0.clientId** | Definições Auth0 para início de sessão social. Usadas quando `anonymousLogin` é `false`. |
 | **fileUploadSizeLimit** | Tamanho máximo de upload mostrado/aplicado pela UI (ex.: `500m`). |
 | **maxAgentConversationTurns** | Limite de mensagens ao agente de IA na UI (`null` = sem limite). |
 
@@ -111,6 +111,6 @@ A UI escolhe o ficheiro de configuração automaticamente: `default.json` quando
 
 1.  O Vault está a correr e `HASHICORP_*` (ou `VAULT_*`) apontam para ele.
 2.  O backend arrancou sem erros e mostra `Running on http://127.0.0.1:8000`.
-3.  O frontend abre e aparece o ecrã de login (usa o login anónimo para testes locais).
+3.  O frontend abre e aparece o ecrã de início de sessão (usa o início de sessão anónimo para testes locais).
 4.  Nenhum aviso *LanceDB Extension Not Found* no workspace.
 5.  Segue o [Guia Rápido](getting-started.md) para executar o teu primeiro pipeline.

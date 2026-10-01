@@ -13,7 +13,7 @@ Browser (UI Still.js)  ──HTTP──►  Backend (Flask)  ──►  Script d
 
 | Componente | Função |
 | :--- | :--- |
-| **Frontend** | App estática Still.js: tela, menus, editores, Data Viz. Servida pelo Nginx ou pelo CLI do Still. |
+| **Frontend** | App estática Still.js: canvas, menus, editores, Data Viz. Servida pelo Nginx ou pelo CLI do Still. |
 | **Backend** | API Flask. Converte o diagrama em script, executa-o como processo separado e envia o output para a UI. |
 | **Templates de nós** | Cada tipo de nó preenche um template de script (ficheiro/bucket, SQL, API, DLT code, outputs). |
 | **Vault** | Guarda credenciais de bases de dados, APIs e cloud por utilizador. Os scripts leem-nas no momento da execução. |

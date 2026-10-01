@@ -29,7 +29,7 @@ Antes de construir o diagrama, precisas de disponibilizar os teus dados na plata
 
 Muda para a vista de **Diagrama** na Navegação Principal para começar a desenhar.
 
-1.  **Colocar Nós:** Arrasta os seguintes nós do **Menu Secundário** para a tela:
+1.  **Colocar Nós:** Arrasta os seguintes nós do **Menu Secundário** para o canvas:
     *   Nó `Start` (da categoria **Start/End**).
     *   `Input - Bucket` (da categoria **Sources**).
     *   `Duckdb (.duckdb)` (da categoria **Outputs/Destinations**).
@@ -41,7 +41,7 @@ Muda para a vista de **Diagrama** na Navegação Principal para começar a desen
 
 Uma vez ligados, deves dizer aos nós que dados específicos devem manipular.
 
-1.  **Selecionar um ficheiro:** Clica no nó `Source Bucket` na tela.
+1.  **Selecionar um ficheiro:** Clica no nó `Source Bucket` no canvas.
 2.  **Padrão de Ficheiro:** No menu suspenso do nó, verás uma lista de todos os teus ficheiros carregados. Seleciona o teu ficheiro `.csv`.
 3.  **Definir Destino:** Clica no nó `Duckdb Output` e insere o **Nome da Base de Dados** e **Nome da Tabela** desejados.
 

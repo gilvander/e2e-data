@@ -1,7 +1,7 @@
 # FAQ
 
 ### Como criar um pipeline?
-Use o guia Primeiros Passos e as configurações de exemplo.
+Usa o guia Primeiros Passos e as definições de exemplo.
 
 ### Como falar com suporte?
-Use o widget de chat (com integração ao WhatsApp quando habilitada).
+Usa o widget de chat (com integração ao WhatsApp quando ativada).

@@ -10,4 +10,4 @@ Endpoints para gerir pipelines.
 
 ## Autenticação
 - Tokens Bearer
-- Acesso baseado em papéis
+- Acesso baseado em funções

@@ -4,7 +4,7 @@ O e2e-Data inclui uma suite de BI integrada para explorar os dados que os teus p
 
 ## Pipelines Analytics Optimized
 
-Junto ao **Pipeline Name**, no topo da tela, existe a caixa **Analytics Optimized**. Quando está marcada, o pipeline é construído para uso analítico em duas fases:
+Junto ao **Pipeline Name**, no topo do canvas, existe a caixa **Analytics Optimized**. Quando está marcada, o pipeline é construído para uso analítico em duas fases:
 
 1.  **Bronze:** os dados em bruto chegam a tabelas padronizadas.
 2.  **Gold ("big table"):** os dados são achatados em tabelas largas otimizadas para consultas de BI rápidas e concorrentes.

@@ -49,7 +49,8 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
 
-plugins: []
+plugins:
+  - search
 nav:
   - English:
     - Home: en/index.md
@@ -71,6 +72,8 @@ nav:
   - Português:
     - Início: pt/index.md
     - Guia do Utilizador: pt/getting-started.md
+    - Interface do Workspace: pt/workspace.md
+    - Ligações & Segredos: pt/connections.md
     - Pipelines: pt/pipelines.md
     - Transformações: pt/transformations.md
     - Data Catalog: pt/data-catalog.md

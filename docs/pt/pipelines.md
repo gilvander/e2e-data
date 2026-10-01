@@ -14,7 +14,7 @@ Localizados no topo (não dobráveis), estes nós definem o ciclo de vida do teu
 Esta secção contém os componentes de "Extração" do teu ETL/ELT.
 
 ### 🪣 Nó Source Bucket
-Quando arrastas o nó Source Bucket para a tela, ele serve como porta de entrada para ingestão baseada em ficheiros. Este nó é altamente adaptável, suportando tanto armazenamento local no servidor como ambientes cloud.
+Quando arrastas o nó Source Bucket para o canvas, ele serve como porta de entrada para ingestão baseada em ficheiros. Este nó é altamente adaptável, suportando tanto armazenamento local no servidor como ambientes cloud.
 
 ![Source Bucket Node](../assets/source-bucket-node.png){ width="25%" }
 
@@ -40,12 +40,12 @@ Independentemente do tipo de armazenamento selecionado, o nó fornece controlo g
 *   **Chave Primária do Recurso:** Este campo permite-te especificar manualmente a chave primária para as linhas dentro do teu ficheiro. Definir isto é uma melhor prática para lidar com a deduplicação de dados, garantindo que o teu destino permanece limpo mesmo que o mesmo ficheiro seja processado múltiplas vezes.
 
 ### Nó SQL DB v2 Source
-O nó SQL DB v2 é o componente padrão para ingestão de bases de dados relacionais. Foi desenhado para ser altamente interativo, obtendo metadados em tempo real da tua base de dados para simplificar o processo de configuração.
+O nó SQL DB v2 é o componente standard para ingestão de bases de dados relacionais. Foi desenhado para ser altamente interativo, obtendo metadados em tempo real da tua base de dados para simplificar o processo de configuração.
 
 ![Source SQL DB](../assets/source-sql-db.png){ width="30%" }
 
 #### Configuração Principal e Metadados
-Uma vez arrastado o nó para a tela, a configuração começa com as tuas credenciais de segurança pré-definidas:
+Uma vez arrastado o nó para o canvas, a configuração começa com as tuas credenciais de segurança pré-definidas:
 *   **Seleção de Segredo:** O menu suspenso primário lista todos os segredos de base de dados existentes do teu Catálogo de Ligações.
 *   **Informação Dinâmica:** Imediatamente após selecionar um segredo, o nó valida a ligação e apresenta detalhes chave da infraestrutura diretamente na face do nó:
     *   **Endereço do Host:** Mostrado no topo para verificação rápida.
@@ -54,8 +54,8 @@ Uma vez arrastado o nó para a tela, a configuração começa com as tuas creden
     *   **Branding do Motor:** Para fácil identificação visual, o logótipo específico do motor de base de dados (ex: o "O vermelho" da Oracle) é apresentado no canto superior esquerdo do nó.
 
 #### Tabela Interativa e Seleção de Chave Primária
-Em vez de digitação manual, o nó fornece uma experiência de "auto-complete" para mapear os teus dados:
-*   **Lista de Tabelas:** Podes adicionar múltiplas tabelas a um único nó clicando no botão verde **(+ Table field)**.
+Em vez de escrita manual, o nó fornece uma experiência de "auto-complete" para mapear os teus dados:
+*   **Lista de Tabelas:** Podes adicionar múltiplas tabelas a um único nó ao clicar no botão verde **(+ Table field)**.
 
 ![Source SQL Tables](../assets/source-sql-tables.png){ width="30%" }
 
@@ -67,12 +67,12 @@ Em vez de digitação manual, o nó fornece uma experiência de "auto-complete" 
 ![Source SQL PK](../assets/source-sql-pk.png){ width="30%" }
 
 ### 🌐 Nó API Source
-O nó API foi desenhado para integração rápida de serviços web no teu pipeline. Abstrai a complexidade técnica de chamadas RESTful puxando todos os metadados necessários diretamente das tuas definições pré-configuradas no catálogo de APIs.
+O nó API foi desenhado para integração rápida de serviços web no teu pipeline. Abstrai a complexidade técnica de chamadas RESTful obtendo todos os metadados necessários diretamente das tuas definições pré-configuradas no catálogo de APIs.
 
 ![Source API Node](../assets/source-api-node.png){ width="30%" }
 
 #### Configuração Sem Esforço
-Configurar o nó API na tela é um processo de um só passo:
+Configurar o nó API no canvas é um processo de um só passo:
 *   **Seleção de Segredo:** A única ação necessária é selecionar o Segredo da API do menu suspenso. Esta lista é preenchida a partir das configurações únicas que definiste anteriormente no Catálogo de APIs.
 
 ![Source API Select](../assets/source-api-select.png){ width="30%" }
@@ -98,7 +98,7 @@ Ao clicar no link "See Code" no nó, abre-se um editor de código dedicado, perm
 
 ![Source DLT Editor](../assets/source-dlt-editor.png){ width="70%" }
 
-*   **Suporte a Templates:** O editor inclui um menu suspenso contendo todos os modelos de código guardados anteriormente. Isto permite-te injetar rapidamente código boilerplate ou lógica reutilizável sem digitação manual.
+*   **Suporte a Templates:** O editor inclui um menu suspenso contendo todos os modelos de código guardados anteriormente. Isto permite-te injetar rapidamente código boilerplate ou lógica reutilizável sem escrita manual.
 
 ![Source DLT Template](../assets/source-dlt-template.png){ width="70%" }
 
@@ -114,7 +114,7 @@ Para manter a segurança, nunca incluas credenciais sensíveis como chaves de AP
 #### Segurança de Execução e Restrições de Importação
 Para segurança do ambiente do servidor, o e2e-Data impõe políticas de segurança no código Python executado dentro destes nós:
 *   **Declarações Restritas:** Certas declarações de importação e comandos de sistema estão desativados por defeito para prevenir acesso não autorizado ao sistema.
-*   **Allowlisting:** Se a tua lógica específica requer uma biblioteca restrita, ela pode ser permitida manualmente na configuração central da aplicação antes de o servidor e2e-Data ser implantado.
+*   **Allowlisting:** Se a tua lógica específica requer uma biblioteca restrita, ela pode ser permitida manualmente na configuração central da aplicação antes de o servidor e2e-Data ser instalado.
 *   **Atualizações Futuras:** Uma secção de UI dedicada está planeada para lançamentos futuros para permitir que administradores giram estas permissões de execução de código diretamente dentro da plataforma.
 
 ## 3. 🔄 Transformation (Transformação) (Dobrável)
@@ -137,7 +137,7 @@ O nó DuckDB Output é um componente de destino de alto desempenho que te permit
 ![DuckDB Output Node](../assets/output-duckdb-node.png){ width="30%" }
 
 #### Campos de Configuração
-Quando arrastas o nó DuckDB Output para a tela, defines a sua identidade através de dois campos principais:
+Quando arrastas o nó DuckDB Output para o canvas, defines a sua identidade através de dois campos principais:
 *   **Nome da Base de Dados:** Atribui um nome lógico para identificar o conjunto de dados dentro do sistema.
 *   **Nome da Tabela:** Um nome para a tabela de saída para manter os teus destinos organizados.
 *   **Geração Automática de Ficheiro:** Não precisas de especificar um caminho de ficheiro; o ficheiro de base de dados DuckDB é criado automaticamente usando o mesmo nome do teu Pipeline, garantindo consistência em todo o teu workspace.
@@ -150,13 +150,13 @@ O nó possui adaptação inteligente de UI baseada na fonte do teu pipeline:
 *   **UI Dinâmica:** Para prevenir erros de configuração e poupar tempo, o campo de nome da tabela é automaticamente ocultado quando uma fonte SQL é detetada, uma vez que o sistema já sabe que tabelas criar no ficheiro DuckDB.
 
 ### Nó Database Output
-O nó Database Output é o destino primário para dados estruturados no teu pipeline. Desenhado para uma experiência "plug-and-play", minimiza a configuração manual alavancando o teu catálogo de segredos existente.
+O nó Database Output é o destino primário para dados estruturados no teu pipeline. Desenhado para uma experiência "plug-and-play", minimiza a configuração manual tirando partido do teu catálogo de segredos existente.
 
 ![Database Output Node](../assets/output-db-node.png){ width="30%" }
 
 #### Configuração de Destino Otimizada
 A configuração para este nó é focada inteiramente em identificar o sistema alvo:
-*   **Seleção de Segredo:** A única ação requerida é selecionar o Nome da Ligação DB pré-configurado do menu suspenso. Isto liga o nó às credenciais e strings de conexão armazenadas no teu catálogo.
+*   **Seleção de Segredo:** A única ação requerida é selecionar o Nome da Ligação DB pré-configurado do menu suspenso. Isto liga o nó às credenciais e strings de ligação armazenadas no teu catálogo.
 
 ![Database Output Select](../assets/output-db-select.png){ width="30%" }
 
@@ -179,7 +179,7 @@ O nó DLT Code Output é a contraparte da versão de entrada, fornecendo um alto
 #### O Editor de Saída e Templates
 Ao clicar no link "See Code", acedes a um ambiente especializado para definir a tua lógica de escrita:
 *   **Templates de Saída Exclusivos:** O menu suspenso neste nó contém modelos desenhados especificamente para entrega de dados. Estes modelos focam-se em especificar onde e como os dados são materializados no teu sistema alvo.
-*   **Lógica Flexível:** Podes usar um modelo existente para configurar rapidamente um destino padrão, modificá-lo para se ajustar às tuas necessidades, ou criar e guardar os teus próprios modelos personalizados. Isto elimina a necessidade de reescrever a mesma lógica de conexão ou carregamento em múltiplos pipelines.
+*   **Lógica Flexível:** Podes usar um modelo existente para configurar rapidamente um destino padrão, modificá-lo para se ajustar às tuas necessidades, ou criar e guardar os teus próprios modelos personalizados. Isto elimina a necessidade de reescrever a mesma lógica de ligação ou carregamento em múltiplos pipelines.
 *   **Templates de Destino Incluídos:** Existem templates prontos para **Google BigQuery** e **Databricks**. Preenche os detalhes do projeto/workspace (e referencia segredos com `__secrets`) para carregar dados nesses armazéns.
 
 #### Segurança via `__secrets`
@@ -189,11 +189,11 @@ Tal como o nó de entrada, a segurança é gerida através de abstração:
 
 #### Execução e Ambiente
 *   **Restrições de Importação:** Para segurança do servidor, certas declarações Python e importações estão restritas por defeito.
-*   **UI de Configuração Futura:** Embora estas restrições sejam atualmente geridas ao nível do servidor (antes da implantação), uma futura atualização de UI permitir-te-á gerir importações e bibliotecas permitidas diretamente das definições da plataforma.
+*   **UI de Configuração Futura:** Embora estas restrições sejam atualmente geridas ao nível do servidor (antes da instalação), uma futura atualização de UI permitir-te-á gerir importações e bibliotecas permitidas diretamente das definições da plataforma.
 
 ## 5. Opções ao nível do pipeline
 
-Junto ao nome do pipeline na tela:
+Junto ao nome do pipeline no canvas:
 
 *   **Analytics Optimized:** constrói o pipeline para uso em BI (camada bronze + "big table" gold achatada). No nó DuckDB Output, **Target Datawarehouse** permite criar um novo armazém ou adicionar tabelas a um existente. Vê [Data Viz & Analytics](analytics.md).
 *   **Run & Save / Save:** *Run & Save* gera e executa o script; *Save* apenas o guarda (como `__toschedule__`) para o [agendares](scheduling.md) mais tarde.

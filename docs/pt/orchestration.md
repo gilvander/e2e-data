@@ -10,5 +10,5 @@ Agendamento e gestão de dependências.
 
 ## Padrões
 - Retry/backoff
-- Estágios idempotentes
+- Etapas idempotentes
 - Filas de dead-letter

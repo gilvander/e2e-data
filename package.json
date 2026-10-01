@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "docs:serve": ".mkdocs-venv/bin/mkdocs serve -a 127.0.0.1:8000",
+    "dev:all": "sh -c 'trap \"kill 0\" EXIT INT TERM; npm run docs:serve & vite & wait'",
+    "docs:build": ".mkdocs-venv/bin/mkdocs build -q",
+    "build": "npm run docs:build && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

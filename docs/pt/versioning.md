@@ -4,7 +4,7 @@ Cada pipeline é guardado como um script (vê [Pipeline Scripts](editor.md)), e 
 
 ## Editar um pipeline
 
-1.  Em **DLT Pipelines Outputs**, abre o menu do pipeline (⋮) e escolhe **View Diagram** para o carregar na tela. Escolhe **Use as template** para começar um pipeline *novo* a partir de um diagrama existente.
+1.  Em **DLT Pipelines Outputs**, abre o menu do pipeline (⋮) e escolhe **View Diagram** para o carregar no canvas. Escolhe **Use as template** para começar um pipeline *novo* a partir de um diagrama existente.
 2.  Altera as definições dos nós ou as ligações.
 3.  Clica em **Run & Save**. Como o pipeline já existe, o e2e-Data atualiza-o em vez de criar um novo.
 

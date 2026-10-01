@@ -23,7 +23,7 @@ O sufixo de um script indica como o pipeline foi criado:
 
 ## Download
 
-Cada script pode ser descarregado a partir do mesmo menu para ser executado ou implantado fora do e2e-Data.
+Cada script pode ser descarregado a partir do mesmo menu para ser executado ou instalado fora do e2e-Data.
 
 ## Regras de segurança
 
