@@ -32,7 +32,7 @@ Quando a opção **Cloud URL** é selecionada, aparece uma camada de configuraç
 ![Source Bucket Cloud](../assets/source-bucket-cloud.png){ width="30%" }
 
 *   **Nome do Segredo do Bucket:** É apresentado um novo menu suspenso, listando todas as credenciais especificamente criadas para buckets no Catálogo de Ligações.
-*   **Suporte de Fornecedor:** Atualmente, a plataforma suporta Amazon S3. O suporte para fornecedores de armazenamento cloud adicionais será integrado à medida que a plataforma evolui ou conforme surjam necessidades específicas.
+*   **Suporte de Fornecedor:** Atualmente, a plataforma suporta Amazon S3, com as credenciais (chave de acesso e chave secreta) guardadas no Catálogo de Ligações. O suporte para fornecedores de armazenamento cloud adicionais será integrado à medida que a plataforma evolui ou conforme surjam necessidades específicas.
 
 #### Gestão de Ficheiros e Deduplicação
 Independentemente do tipo de armazenamento selecionado, o nó fornece controlo granular sobre os objetos de dados específicos:
@@ -103,6 +103,7 @@ Ao clicar no link "See Code" no nó, abre-se um editor de código dedicado, perm
 ![Source DLT Template](../assets/source-dlt-template.png){ width="70%" }
 
 *   **Desenvolvimento Personalizado:** Podes escrever e refinar o teu código Python diretamente dentro do editor para lidar com estruturas de dados complexas ou fontes não-padrão.
+*   **Templates de Fontes Incluídos:** Além do template de código genérico, o menu oferece pontos de partida prontos para **Airtable**, **Kafka**, **Kafka + SASL** e **MongoDB**. Substitui os `<marcadores>` (tópico, servidor, ...) pelos teus valores e move as credenciais para o Catálogo de Ligações.
 *   **Melhores Práticas:** Para garantir compatibilidade com o motor do pipeline, usa sempre os decoradores `@dlt.source` e `@dlt.resource` para anotar a tua lógica corretamente, e o recurso precisa de ser retornado ao nível da fonte.
 
 #### Segurança e Gestão de Segredos
@@ -179,6 +180,7 @@ O nó DLT Code Output é a contraparte da versão de entrada, fornecendo um alto
 Ao clicar no link "See Code", acedes a um ambiente especializado para definir a tua lógica de escrita:
 *   **Templates de Saída Exclusivos:** O menu suspenso neste nó contém modelos desenhados especificamente para entrega de dados. Estes modelos focam-se em especificar onde e como os dados são materializados no teu sistema alvo.
 *   **Lógica Flexível:** Podes usar um modelo existente para configurar rapidamente um destino padrão, modificá-lo para se ajustar às tuas necessidades, ou criar e guardar os teus próprios modelos personalizados. Isto elimina a necessidade de reescrever a mesma lógica de conexão ou carregamento em múltiplos pipelines.
+*   **Templates de Destino Incluídos:** Existem templates prontos para **Google BigQuery** e **Databricks**. Preenche os detalhes do projeto/workspace (e referencia segredos com `__secrets`) para carregar dados nesses armazéns.
 
 #### Segurança via `__secrets`
 Tal como o nó de entrada, a segurança é gerida através de abstração:
@@ -188,3 +190,11 @@ Tal como o nó de entrada, a segurança é gerida através de abstração:
 #### Execução e Ambiente
 *   **Restrições de Importação:** Para segurança do servidor, certas declarações Python e importações estão restritas por defeito.
 *   **UI de Configuração Futura:** Embora estas restrições sejam atualmente geridas ao nível do servidor (antes da implantação), uma futura atualização de UI permitir-te-á gerir importações e bibliotecas permitidas diretamente das definições da plataforma.
+
+## 5. Opções ao nível do pipeline
+
+Junto ao nome do pipeline na tela:
+
+*   **Analytics Optimized:** constrói o pipeline para uso em BI (camada bronze + "big table" gold achatada). No nó DuckDB Output, **Target Datawarehouse** permite criar um novo armazém ou adicionar tabelas a um existente. Vê [Data Viz & Analytics](analytics.md).
+*   **Run & Save / Save:** *Run & Save* gera e executa o script; *Save* apenas o guarda (como `__toschedule__`) para o [agendares](scheduling.md) mais tarde.
+*   Após uma execução bem-sucedida, as colunas do pipeline ficam registadas no [Data Catalog](data-catalog.md).

@@ -4,7 +4,8 @@
 
 The far-left blue ribbon can be expanded to reveal the primary functional areas of the platform. This drawer allows you to switch contexts without losing your progress on the canvas.
 
-*   **DLT Pipelines Outputs:** View the results, data samples, and destination schemas of your executed flows.
+*   **DLT Pipelines Outputs:** View the results, data samples, and destination schemas of your executed flows. Each pipeline's menu (⋮) also gives access to its diagram, schedule and [Data Catalog](data-catalog.md).
+*   **Data Viz:** Charts, pivot tables and dashboards over your data. See [Data Viz & Analytics](analytics.md).
 *   **Pipeline Scripts:** Access the auto-generated Python and dltHub code that powers your visual diagrams.
 *   **Connection Settings:** Centrally manage your credentials, secrets, and connection strings (e.g., SQL DB connection parameters).
 *   **Data Files:** Manage flat files (e.g., Parquet, CSVs, JSONL) used as local data sources for your pipelines.
@@ -45,6 +46,13 @@ As seen in the interface, pipelines like `from_orcl_to_mssql` demonstrate comple
 *   **Filter by pipeline name:** Use the input field to quickly locate specific workflows in a dense list.
 *   **Scheduled View Toggle:** Use the "Scheduled pipeline only" toggle to isolate and manage only your active, automated runs.
 
+### Pipeline Menu (⋮)
+Next to each pipeline:
+*   **View Diagram:** Load the pipeline on the canvas.
+*   **Schedule → Pause/Resume:** Stop or restart a scheduled pipeline (shown only for scheduled pipelines).
+*   **Use as template:** Start a new pipeline from this diagram.
+*   **Data catalog:** Open the [Data Catalog](data-catalog.md) for the pipeline.
+
 ### DuckDB Querying
 For DuckDB destinations, you can interact with your data directly within the workspace.
 1.  Click the three dots (⋮) next to a table to open the action menu.
@@ -59,7 +67,7 @@ The Pipeline Scripts menu provides direct access to the auto-generated Python an
 ![Pipeline Scripts](../assets/pipeline-scripts.png){ width="80%" }
 
 *   **Script Inventory:** This menu lists the file scripts for all created pipelines in your workspace (e.g., `oracle_to_duckdb.py`).
-*   **In-App Code Editor:** You can view and edit the code directly within e2e-Data. To do so:
+*   **In-App Code Viewer/Editor:** You can open the code directly within e2e-Data (see [Pipeline Scripts](editor.md) for what is saved). To do so:
     1.  Click the three dots (⋮) next to the desired script.
     2.  Select **Open Editor** from the dropdown menu to launch the built-in code editor.
 *   **Download Scripts:** For local development or external deployment, every script can be downloaded directly from this menu.
@@ -82,9 +90,15 @@ The central grid is an infinite design space where you architect the flow.
 ### Canvas Tools
 Use the bottom-right icons to **Lock** your diagram (preventing accidental moves) or **Zoom** for a better view of large-scale pipelines.
 
+### Pipeline name and options (top bar)
+*   **Pipeline Name:** Click to rename the active pipeline.
+*   **Analytics Optimized:** Builds the pipeline for BI use (bronze + gold big table). See [Data Viz & Analytics](analytics.md).
+*   **Schedule a job:** Run the pipeline every N minutes/hours. See [Scheduling](scheduling.md).
+
 ### Action Center (Top Right)
 *   **📊 Monitor:** Toggle the display of real-time execution logs.
 *   **📅 Schedule:** Access the list of scheduled pipelines.
+*   **Logs icon (header):** Open *Pipeline Real time logs* or *Log analysis*. See [Monitoring](monitoring.md).
 
 ### Pipeline Action
 *   **🚀 Run & Save:** Run and Save the pipeline.

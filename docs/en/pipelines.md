@@ -32,7 +32,7 @@ When the **Cloud URL** option is selected, an additional configuration layer app
 ![Source Bucket Cloud](../assets/source-bucket-cloud.png){ width="30%" }
 
 *   **Bucket Secret Name:** A new dropdown is displayed, listing all credentials specifically created for buckets in the Connections Catalog.
-*   **Provider Support:** Currently, the platform supports Amazon S3. Support for additional cloud storage providers will be integrated as the platform evolves or as specific needs arise.
+*   **Provider Support:** Currently, the platform supports Amazon S3, with credentials (access key and secret key) stored in the Connections Catalog. Support for additional cloud storage providers will be integrated as the platform evolves or as specific needs arise.
 
 #### File Management & Deduplication
 Regardless of the storage type selected, the node provides granular control over the specific data objects:
@@ -103,6 +103,7 @@ By clicking the "See Code" link on the node, a dedicated code editor opens, allo
 ![Source DLT Template](../assets/source-dlt-template.png){ width="70%" }
 
 *   **Custom Development:** You can write and refine your Python code directly within the editor to handle complex data structures or non-standard sources.
+*   **Built-in Source Templates:** Besides the generic code template, the dropdown offers ready-made starting points for **Airtable**, **Kafka**, **Kafka + SASL** and **MongoDB**. Replace the `<placeholders>` (topic, server, ...) with your values, and move credentials to the Connections Catalog.
 *   **Best Practices:** To ensure compatibility with the pipeline engine, always use the `@dlt.source` and `@dlt.resource` decorators to annotate your logic correctly, and the resource need to be returned in the source level.
 
 #### Security & Secret Management
@@ -179,6 +180,7 @@ The DLT Code Output node is the counterpart to the input version, providing a hi
 By clicking the "See Code" link, you access a specialized environment for defining your write logic:
 *   **Exclusive Output Templates:** The dropdown menu in this node contains templates specifically designed for data delivery. These templates focus on specifying where and how data is materialized in your target system.
 *   **Flexible Logic:** You can use an existing template to quickly set up a standard destination, modify it to fit your needs, or create and save your own custom templates. This eliminates the need to rewrite the same connection or loading logic across multiple pipelines.
+*   **Built-in Destination Templates:** Ready-made templates are provided for **Google BigQuery** and **Databricks**. Fill in the project/workspace details (and reference secrets with `__secrets`) to load data into those warehouses.
 
 #### Security via `__secrets`
 Just like the input node, security is handled through abstraction:
@@ -188,3 +190,11 @@ Just like the input node, security is handled through abstraction:
 #### Execution & Environment
 *   **Import Restrictions:** For server security, certain Python statements and imports are restricted by default.
 *   **Future Configuration UI:** While these restrictions are currently managed at the server level (before deployment), a future UI update will allow you to manage allowed imports and libraries directly from the platform's settings.
+
+## 5. Pipeline-level options
+
+Next to the pipeline name on the canvas:
+
+*   **Analytics Optimized:** builds the pipeline as a bronze layer plus a flattened gold "big table" for BI. In the DuckDB Output node, **Target Datawarehouse** lets you create a new warehouse or add tables to an existing one. See [Data Viz & Analytics](analytics.md).
+*   **Run & Save / Save:** *Run & Save* generates and runs the script; *Save* only stores it (as `__toschedule__`) so it can be [scheduled](scheduling.md) later.
+*   After a successful run, the pipeline's columns are registered in the [Data Catalog](data-catalog.md).

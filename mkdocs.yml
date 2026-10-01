@@ -58,8 +58,13 @@ nav:
     - Connections & Secrets: en/connections.md
     - Pipeline Designer: en/pipelines.md
     - Transformations: en/transformations.md
+    - Data Catalog: en/data-catalog.md
+    - Data Viz & Analytics: en/analytics.md
     - Scheduling: en/scheduling.md
     - Versioning: en/versioning.md
+    - Script Editor: en/editor.md
+    - Monitoring & Logs: en/monitoring.md
+    - Architecture: en/architecture.md
     - Installation: en/installation.md
     - AI Agent: en/ai-agent.md
     - Final: en/final.md
@@ -68,9 +73,13 @@ nav:
     - Guia do Utilizador: pt/getting-started.md
     - Pipelines: pt/pipelines.md
     - Transformações: pt/transformations.md
+    - Data Catalog: pt/data-catalog.md
+    - Data Viz & Analytics: pt/analytics.md
     - Agendamento: pt/scheduling.md
     - Versionamento: pt/versioning.md
     - Editor de Código: pt/editor.md
+    - Monitorização & Logs: pt/monitoring.md
+    - Arquitetura: pt/architecture.md
     - Instalação: pt/installation.md
     - AI Agent: pt/ai-agent.md
     - Secção Final: pt/final.md
