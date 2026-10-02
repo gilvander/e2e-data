@@ -16,7 +16,7 @@ const resources = {
         heroBody: "An open-source data platform that turns diagrams into production-ready dltHub pipelines: from ingestion to catalog, BI and AI-assisted queries, with credentials kept in HashiCorp Vault.",
         ctaDemo: "Try the live demo",
         ctaDocs: "Read documentation",
-        trust: ["Open source (MIT)", "Self-hosted or cloud", "Secrets in HashiCorp Vault", "Built on dltHub and DuckDB"],
+        trust: ["Open source", "Self-hosted or cloud", "Secrets in HashiCorp Vault", "Built on dltHub and DuckDB"],
         previewTitle: "From diagram to data in minutes",
         previewCaption: "Illustrative example: a CSV file loaded into DuckDB. Every node is real Python/dlt code behind the scenes.",
         featuresTitle: "Why use e2e‑Data?",
@@ -43,7 +43,7 @@ const resources = {
           destinationsTitle: "Destinations",
           destinationsItems: ["DuckDB (default)", "SQL databases", "Google BigQuery", "Databricks"],
           deployTitle: "Deployment",
-          deployItems: ["Open source under the MIT license", "Docker Compose in a single command", "Self-host on-prem or in your own cloud/VPC", "Bring your own Vault (cloud or self-hosted)"]
+          deployItems: ["Open source", "Docker Compose in a single command", "Self-host on-prem or in your own cloud/VPC", "Bring your own Vault (cloud or self-hosted)"]
         },
         architectureTitle: "Architecture at a glance",
         architectureAlt: "e2e-Data architecture diagram: Still.js UI, backend engine with dltHub, Polars, DuckDB and pandas, Vault for secrets and Groq for AI",
@@ -245,7 +245,7 @@ const resources = {
         heroBody: "Uma plataforma de dados open source que transforma diagramas em pipelines dltHub prontos para produção: da ingestão ao catálogo, BI e consultas assistidas por IA, com as credenciais guardadas no HashiCorp Vault.",
         ctaDemo: "Experimentar a demo",
         ctaDocs: "Ler documentação",
-        trust: ["Open source (MIT)", "Self-hosted ou cloud", "Segredos no HashiCorp Vault", "Construído sobre dltHub e DuckDB"],
+        trust: ["Open source", "Self-hosted ou cloud", "Segredos no HashiCorp Vault", "Construído sobre dltHub e DuckDB"],
         previewTitle: "Do diagrama aos dados em minutos",
         previewCaption: "Exemplo ilustrativo: um ficheiro CSV carregado para DuckDB. Cada nó é código Python/dlt real por trás.",
         featuresTitle: "Porquê usar a e2e‑Data?",
@@ -272,7 +272,7 @@ const resources = {
           destinationsTitle: "Destinos",
           destinationsItems: ["DuckDB (por defeito)", "Bases de dados SQL", "Google BigQuery", "Databricks"],
           deployTitle: "Instalação",
-          deployItems: ["Open source sob licença MIT", "Docker Compose com um só comando", "Self-host on-prem ou na tua cloud/VPC", "Traz o teu Vault (cloud ou self-hosted)"]
+          deployItems: ["Open source", "Docker Compose com um só comando", "Self-host on-prem ou na tua cloud/VPC", "Traz o teu Vault (cloud ou self-hosted)"]
         },
         architectureTitle: "Arquitetura num relance",
         architectureAlt: "Diagrama de arquitetura da e2e-Data: UI Still.js, motor backend com dltHub, Polars, DuckDB e pandas, Vault para segredos e Groq para IA",
